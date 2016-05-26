@@ -4,8 +4,7 @@ var cc              = require('config-multipaas'),
     Router          = require('router'),
     fs              = require('fs'),
     serveStatic     = require("serve-static"),
-    express         = require('express'),
-    SimpleWebsocket = require('simple-websocket');
+    express         = require('express');
  
 var config   = cc();
 var app      = Router()
