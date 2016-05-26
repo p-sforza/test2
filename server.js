@@ -3,7 +3,9 @@ var cc       = require('config-multipaas'),
     http     = require("http"),
     Router       = require('router'),
     fs = require('fs'),
-    serveStatic       = require("serve-static");
+    serveStatic       = require("serve-static"),
+    express = require('express');
+
 
 var config   = cc();
 var app      = Router()
@@ -25,7 +27,7 @@ app.get("/", function (req, res) {
   res.end(index.toString())
 })
 
-app.use(express.static(process.cwd() + '/public'));
+app.use('/public', express.static('public'));
 
 // Create server 
 var server = http.createServer(function(req, res){
