@@ -25,6 +25,13 @@ app.get("/", function (req, res) {
   res.end(index.toString())
 })
 
+app.get("/public", function (req, res) {
+  var index = fs.readFileSync(__dirname + '/public')
+  res.statusCode = 200
+  res.setHeader('Content-Type', 'text/html; charset=utf-8')
+  res.end(index.toString())
+})
+
 // Create server 
 var server = http.createServer(function(req, res){
   var done = finalhandler(req, res)
