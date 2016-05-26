@@ -1,4 +1,4 @@
-var SimpleWebsocket = require('simple-websocket');
+SimpleWebsocket = require('simple-websocket');
 var socket = new SimpleWebsocket('ws://echo.websocket.org')
 socket.on('connect', function () {
   // socket is connected! 
