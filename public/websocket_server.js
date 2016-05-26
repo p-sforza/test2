@@ -8,7 +8,7 @@ var notify = function(req, res) {
 		}));
 }
 
-var wss = new WebSocketServer({server:server});
+var wss = new WebSocketServer('ws://echo.websocket.org');
 wss.on('connection', function(ws) {
 	adminWS.push(ws);
 });
