@@ -5,8 +5,7 @@ var cc              = require('config-multipaas'),
     fs              = require('fs'),
     serveStatic     = require("serve-static"),
     express         = require('express'),
-	WebSocketServer = require('simple-websocket');
-
+    SimpleWebsocket = require('simple-websocket');
 
 var config   = cc();
 var app      = Router()

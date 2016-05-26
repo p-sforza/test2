@@ -1,14 +1,9 @@
-var adminWS = [ ];
-var notify = function(req, res) {
-	for(c in adminWS) 
-		adminWS[c].send(JSON.stringify({ 
-			id: req.connection.remoteAddress,
-			userAgent: req.headers['user-agent'],
-			time: (new Date()).getTime()
-		}));
-}
-
-var wss = new WebSocketServer('ws://echo.websocket.org');
-wss.on('connection', function(ws) {
-	adminWS.push(ws);
-});
+var socket = new SimpleWebsocket('ws://echo.websocket.org')
+socket.on('connect', function () {
+  // socket is connected! 
+  socket.send('sup!')
+})
+ 
+socket.on('data', function (data) {
+  console.log('got message: ' + data)
+})
