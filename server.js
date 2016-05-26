@@ -4,7 +4,8 @@ var cc              = require('config-multipaas'),
     Router          = require('router'),
     fs              = require('fs'),
     serveStatic     = require("serve-static"),
-    express         = require('express');
+    express         = require('express'),
+    SimpleWebsocket = require('simple-websocket');
  
 var config   = cc();
 var app      = Router()
@@ -32,6 +33,16 @@ app.use('/public', express.static('public'));
 var server = http.createServer(function(req, res){
   var done = finalhandler(req, res)
   app(req, res, done)
+})
+
+var socket = new SimpleWebsocket('ws://echo.websocket.org')
+socket.on('connect', function () {
+  // socket is connected! 
+  socket.send('sup!')
+})
+ 
+socket.on('data', function (data) {
+  console.log('got message: ' + data)
 })
 
 server.listen(config.get('PORT'), config.get('IP'), function () {
