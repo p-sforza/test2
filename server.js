@@ -5,7 +5,7 @@ var cc              = require('config-multipaas'),
     fs              = require('fs'),
     serveStatic     = require("serve-static"),
     express         = require('express'),
-    dispatcher      = require('httpdispatcher'),
+    dispatcher      = require('http-dispatcher'),
 	WebSocketServer = require('ws').Server;
 
 
