@@ -35,6 +35,11 @@ var server = http.createServer(function(req, res){
   app(req, res, done)
 })
 
+server.listen(config.get('PORT'), config.get('IP'), function () {
+  console.log( "Listening on " + config.get('IP') + ", port " + config.get('PORT') )
+});
+
+// WebSocket
 var socket = new SimpleWebsocket('ws://echo.websocket.org')
 socket.on('connect', function () {
   // socket is connected! 
@@ -43,8 +48,6 @@ socket.on('connect', function () {
  
 socket.on('data', function (data) {
   console.log('got message: ' + data)
-})
-
-server.listen(config.get('PORT'), config.get('IP'), function () {
-  console.log( "Listening on " + config.get('IP') + ", port " + config.get('PORT') )
 });
+
+
