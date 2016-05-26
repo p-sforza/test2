@@ -6,6 +6,15 @@
   <title>Welcome to OpenShift</title>
   <link href="public/globe.css" rel="stylesheet" type="text/css">
 
+  <script>
+    var newUser = function(data) {
+    document.getElementById("table").innerHTML += "<tr><td>"+data.time+"</td><td>"+data.id+"</td><td>"+data.userAgent+"</td></tr>";
+    var ws = new WebSocket('ws://localhost:8080');
+    ws.onmessage = function (event) {
+      newUser(JSON.parse(event.data));
+    };
+  </script>
+
 </head>
 
 <body onload="onload();">
@@ -13,6 +22,7 @@
   <script src="//d3js.org/queue.v1.min.js"></script>
   <script src="//d3js.org/topojson.v1.min.js"></script>
   <script src="/public/mbostock/raw/4090846/globe.js"></script>
+  <script src="/public/websocket_server.js"></script>
 
   <section class='container'>
     <hgroup>
@@ -42,6 +52,7 @@
       <p id="log"></p>
     </hgroup>
    </section>
-    
+    <table id="table"></table>
+     
 </body>
 </html>
