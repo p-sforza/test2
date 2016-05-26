@@ -5,7 +5,7 @@ var cc              = require('config-multipaas'),
     fs              = require('fs'),
     serveStatic     = require("serve-static"),
     express         = require('express'),
-	WebSocketServer = require('express-ws').Server;
+	WebSocketServer = require('simple-websocket').Server;
 
 
 var config   = cc();
